@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000
 
+const Workout = require("./models/workout");
+
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -16,9 +18,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useUnifiedTopology: true
 });
 
-// // routes
-// app.use(require("./routes/api.js"));
+// routes
+app.use(require("./routes/api"));
+app.use(require("./routes/view"));
 
 app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
+  console.log(`App running on port http://localhost:${PORT}`);
 });
