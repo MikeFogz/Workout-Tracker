@@ -11,7 +11,7 @@ router.post("/api/workouts", (req, res) => {
         });
 });
 
-router.post("/api/workouts/:id", ({ body, params }, res) => {
+router.put("/api/workouts/:id", ({ body, params }, res) => {
     Workout.findByIdAndUpdate(
         params.id,
         { $push: { exercises: body } },
@@ -25,7 +25,7 @@ router.post("/api/workouts/:id", ({ body, params }, res) => {
     });
 });
 
-router.post("/api/workouts", (req, res) => {
+router.get("/api/workouts", (req, res) => {
     Workout.aggregate([
         {
             $addFields: {
