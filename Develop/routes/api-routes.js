@@ -43,7 +43,7 @@ router.post("/api/workouts", (req, res) => {
         });
 });
 
-router.post("/api/workouts/range", (req, res) => {
+router.get("/api/workouts/range", (req, res) => {
     Workout.aggregate([
         {
             $addFields: {
